@@ -1,7 +1,7 @@
 {
   "name": "equipment-management-backend",
   "version": "1.0.0",
-  "description": "Backend API for Equipment Management System",
+  "description": "Backend API for eQuipo",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

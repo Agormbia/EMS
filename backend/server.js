@@ -24,7 +24,7 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Equipment Management System API',
+      title: 'eQuipo API',
       version: '1.0.0',
       description: 'A comprehensive API for managing equipment with CRUD operations',
       contact: {
@@ -104,7 +104,7 @@ app.get('/health', (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: 'Equipment Management System API',
+    message: 'eQuipo API',
     version: '1.0.0',
     documentation: `/api-docs`
   });

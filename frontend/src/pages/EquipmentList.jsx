@@ -6,7 +6,6 @@ import {
   Filter, 
   Edit, 
   Trash2, 
-  Eye,
   Package,
   MapPin,
   Calendar,
@@ -308,12 +307,6 @@ export default function EquipmentList() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-2">
-                        <Link
-                          to={`/equipment/${item.id}`}
-                          className="text-primary-600 hover:text-primary-900 p-1 rounded hover:bg-primary-50"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </Link>
                         <button
                           onClick={() => handleEditEquipment(item)}
                           className="text-warning-600 hover:text-warning-900 p-1 rounded hover:bg-warning-50"

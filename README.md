@@ -1,4 +1,4 @@
-# Equipment Management System
+# eQuipo
 
 A comprehensive full-stack equipment management system with CRUD operations, built with Node.js/Express backend and React frontend.
 

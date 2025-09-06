@@ -243,7 +243,23 @@ router.get('/recent-activity', (req, res) => {
       console.error('Error fetching recent activity:', err);
       return res.status(500).json({ error: 'Failed to fetch recent activity' });
     }
-    res.json(rows);
+
+    // Process the rows to handle deleted equipment
+    const processedRows = rows.map(row => {
+      // For DELETE actions, extract name from oldValues if equipmentName is null
+      if (row.action === 'DELETE' && !row.equipmentName && row.oldValues) {
+        try {
+          const oldValues = JSON.parse(row.oldValues);
+          row.equipmentName = oldValues.name;
+        } catch (e) {
+          console.error('Error parsing oldValues for deleted equipment:', e);
+          row.equipmentName = 'Unknown Equipment';
+        }
+      }
+      return row;
+    });
+
+    res.json(processedRows);
   });
 });
 

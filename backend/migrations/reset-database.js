@@ -1,4 +1,4 @@
-const { db } = require('../config/database');
+const { getDb } = require('../config/database');
 const fs = require('fs');
 const path = require('path');
 
@@ -6,6 +6,8 @@ console.log('🔄 Resetting database...');
 
 const resetDatabase = () => {
   return new Promise((resolve, reject) => {
+    const db = getDb();
+    
     // Drop all tables
     const dropTables = [
       'DROP TABLE IF EXISTS equipment_history',
@@ -28,14 +30,20 @@ const resetDatabase = () => {
 
       // Wait a bit for tables to be dropped, then recreate
       setTimeout(() => {
-        const { initDatabase } = require('../config/database');
-        initDatabase()
-          .then(() => {
-            console.log('✅ Database reset completed successfully!');
-            console.log('🆕 All tables recreated with fresh sample data');
-            resolve();
-          })
-          .catch(reject);
+        db.close((err) => {
+          if (err) {
+            console.error('Error closing database:', err.message);
+          }
+          
+          const { initDatabase } = require('../config/database');
+          initDatabase()
+            .then(() => {
+              console.log('✅ Database reset completed successfully!');
+              console.log('🆕 All tables recreated with fresh sample data');
+              resolve();
+            })
+            .catch(reject);
+        });
       }, 1000);
     });
   });
