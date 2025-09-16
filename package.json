@@ -13,10 +13,17 @@
     "migrate": "cd backend && npm run migrate",
     "migrate:reset": "cd backend && npm run migrate:reset"
   },
-  "keywords": ["equipment", "management", "crud", "api", "react", "express"],
+  "keywords": [
+    "equipment",
+    "management",
+    "crud",
+    "api",
+    "react",
+    "express"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^9.2.1"
   }
 }
